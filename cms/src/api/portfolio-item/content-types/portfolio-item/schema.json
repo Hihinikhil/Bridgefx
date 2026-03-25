@@ -1,0 +1,66 @@
+{
+  "kind": "collectionType",
+  "collectionName": "portfolio_items",
+  "info": {
+    "singularName": "portfolio-item",
+    "pluralName": "portfolio-items",
+    "displayName": "Portfolio Item",
+    "description": "Work projects shown on the site"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "category": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "brand",
+        "social",
+        "photo",
+        "others"
+      ]
+    },
+    "layout": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "horizontal",
+        "vertical",
+        "square"
+      ]
+    },
+    "isPhoto": {
+      "type": "boolean",
+      "default": false
+    },
+    "bg": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    }
+  }
+}

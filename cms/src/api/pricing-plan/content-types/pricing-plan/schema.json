@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pricing_plans",
+  "info": {
+    "singularName": "pricing-plan",
+    "pluralName": "pricing-plans",
+    "displayName": "Pricing Plan",
+    "description": "Pricing tiers shown on the site"
+  },
+  "options": { "draftAndPublish": false },
+  "attributes": {
+    "tag":         { "type": "string",  "required": true },
+    "amount":      { "type": "string",  "required": true },
+    "features":    { "type": "json"    },
+    "buttonLabel": { "type": "string",  "default": "Get Started ↗" },
+    "featured":    { "type": "boolean", "default": false },
+    "iconType":    { "type": "enumeration", "enum": ["starter", "diamond", "brands"], "default": "starter" },
+    "order":       { "type": "integer", "default": 0 }
+  }
+}

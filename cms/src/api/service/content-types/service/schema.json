@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "services",
+  "info": {
+    "singularName": "service",
+    "pluralName": "services",
+    "displayName": "Service",
+    "description": "Agency service offerings"
+  },
+  "options": { "draftAndPublish": false },
+  "attributes": {
+    "title":       { "type": "string",  "required": true },
+    "description": { "type": "text"    },
+    "tags":        { "type": "json"    },
+    "iconType":    { "type": "enumeration", "enum": ["video", "design"], "default": "video" },
+    "order":       { "type": "integer", "default": 0 }
+  }
+}

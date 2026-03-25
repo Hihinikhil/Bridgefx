@@ -1,0 +1,29 @@
+{
+  "kind": "singleType",
+  "collectionName": "brand_sections",
+  "info": {
+    "singularName": "brand-section",
+    "pluralName": "brand-sections",
+    "displayName": "Brand Section",
+    "description": "Unified section for brand stats and logos"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "stats": {
+      "type": "component",
+      "repeatable": true,
+      "component": "brand.stat"
+    },
+    "logos": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}
