@@ -1,12 +1,14 @@
-export default function Footer() {
+export default function Footer({ data }) {
+  const footerData = data || {};
+  const siteName = footerData.siteName || "BRIDGEFX";
   return (
     <footer>
       <div className="container footer-wrap">
-        <a href="#hero" className="logo">BRIDGEFX<span>.</span></a>
+        <a href="#hero" className="logo">{siteName}<span>.</span></a>
         <div className="foot-links">
-          <a href="#">X / Twitter</a>
-          <a href="#">Instagram</a>
-          <a href="#">LinkedIn</a>
+          <a href={footerData.twitterUrl || "#"} target="_blank" rel="noreferrer">X / Twitter</a>
+          <a href={footerData.instagramUrl || "#"} target="_blank" rel="noreferrer">Instagram</a>
+          <a href={footerData.linkedinUrl || "#"} target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
       </div>
     </footer>

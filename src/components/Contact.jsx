@@ -32,10 +32,9 @@ export default function Contact() {
           <p className="section-label" style={{ justifyContent: "center" }}>
             Connect
           </p>
-          <h2 className="section-title">READY TO SCALE?</h2>
+          <h2 className="section-title">{contactData.contactTitle || "READY TO SCALE?"}</h2>
           <p className="section-sub" style={{ margin: "0 auto" }}>
-            Select your preferred method of crossing. We respond to serious
-            inquiries within 12 hours.
+            {contactData.contactSub || "Select your preferred method of crossing. We respond to serious inquiries within 12 hours."}
           </p>
         </div>
 
@@ -47,7 +46,7 @@ export default function Contact() {
                 Instant connection for project speed.
               </p>
               <a
-                href="https://wa.me/9460922273"
+                href={contactData.whatsappNumber ? `https://wa.me/${contactData.whatsappNumber}` : "https://wa.me/9460922273"}
                 target="_blank"
                 rel="noreferrer"
                 className="whatsapp-btn"

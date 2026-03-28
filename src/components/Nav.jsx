@@ -1,7 +1,8 @@
 import { useEffect, useRef } from "react";
 
-export default function Nav() {
+export default function Nav({ data }) {
   const navRef = useRef(null);
+  const siteName = data?.siteName || "BRIDGEFX";
 
   useEffect(() => {
     let lastScroll = 0;

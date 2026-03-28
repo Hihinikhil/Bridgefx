@@ -70,8 +70,8 @@ export default function App() {
   return (
     <>
       <Preloader isLoading={isLoading} />
-      <Nav />
-      <Hero />
+      <Nav data={brandData} />
+      <Hero data={brandData} />
       <Work onViewAll={() => setModalOpen(true)} items={portfolioItems} />
       <PortfolioModal
         isOpen={modalOpen}
@@ -85,8 +85,8 @@ export default function App() {
       <Reviews items={reviewsItems} />
       <Pricing items={pricingItems} />
       <Team items={teamItems} />
-      <Contact />
-      <Footer />
+      <Contact data={brandData} />
+      <Footer data={brandData} />
     </>
   )
 }

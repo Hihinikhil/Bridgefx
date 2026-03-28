@@ -24,6 +24,18 @@
       "allowedTypes": [
         "images"
       ]
-    }
+    },
+    "heroSmall": { "type": "string" },
+    "heroTitle": { "type": "string" },
+    "heroDesc": { "type": "text" },
+    "heroCta": { "type": "string" },
+    "contactTitle": { "type": "string" },
+    "contactSub": { "type": "text" },
+    "whatsappNumber": { "type": "string" },
+    "contactEmail": { "type": "string" },
+    "siteName": { "type": "string" },
+    "twitterUrl": { "type": "string" },
+    "instagramUrl": { "type": "string" },
+    "linkedinUrl": { "type": "string" }
   }
 }
