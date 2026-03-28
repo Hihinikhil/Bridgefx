@@ -15,10 +15,8 @@ const FALLBACK = [
   { name: 'Siddharth',role: 'Designer', initials: 'NR' },
 ]
 
-export default function Team() {
-  const { data } = useStrapiData('/team-members?sort=order&populate=avatar', FALLBACK)
-
-  const members = data.map(d => ({
+export default function Team({ items }) {
+  const members = (items?.length > 0 ? items : FALLBACK).map(d => ({
     name:       d.name     ?? '',
     role:       d.role     ?? '',
     initials:   d.initials ?? '??',

@@ -60,10 +60,8 @@ function layoutClass(layout) {
   return "rev-square";
 }
 
-export default function Reviews() {
-  const { data } = useStrapiData("/reviews?sort=order&populate=*", FALLBACK);
-
-  const reviews = data.map((d) => ({
+export default function Reviews({ items }) {
+  const reviews = (items?.length > 0 ? items : FALLBACK).map((d) => ({
     authorName: d.authorName ?? "",
     authorInitials: d.authorInitials ?? "??",
     authorTitle: d.authorTitle ?? "",

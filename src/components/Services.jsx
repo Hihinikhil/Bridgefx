@@ -31,10 +31,8 @@ function getIcon(iconType) {
   return iconType === 'design' ? DESIGN_ICON : VIDEO_ICON
 }
 
-export default function Services() {
-  const { data } = useStrapiData('/services?sort=order', FALLBACK_SERVICES)
-
-  const services = data.map(d => ({
+export default function Services({ items }) {
+  const services = (items?.length > 0 ? items : FALLBACK_SERVICES).map(d => ({
     title:       d.title       ?? '',
     description: d.description ?? '',
     tags:        Array.isArray(d.tags) ? d.tags : [],

@@ -4,6 +4,7 @@ import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Work from './components/Work'
 import PortfolioModal, { usePortfolioItems } from './components/PortfolioModal'
+import { useStrapiData } from './hooks/useStrapiData'
 import BrandStrip from './components/BrandStrip'
 import Services from './components/Services'
 import Reviews from './components/Reviews'
@@ -16,8 +17,15 @@ export default function App() {
   const [modalOpen, setModalOpen]       = useState(false)
   const [activeFilter, setActiveFilter] = useState('all')
 
-  // Fetch portfolio items at root — shared by Work preview + PortfolioModal
-  const { items: portfolioItems } = usePortfolioItems()
+  // Consolidated data fetching
+  const { items: portfolioItems, loading: portfolioLoading } = usePortfolioItems()
+  const { data: servicesItems,  loading: servicesLoading }  = useStrapiData('/services?sort=order')
+  const { data: pricingItems,   loading: pricingLoading }   = useStrapiData('/pricing-plans?sort=order')
+  const { data: brandData,      loading: brandLoading }     = useStrapiData('/brand-section?populate=*')
+  const { data: reviewsItems,   loading: reviewsLoading }   = useStrapiData('/reviews?sort=order&populate=*')
+  const { data: teamItems,      loading: teamLoading }      = useStrapiData('/team-members?sort=order&populate=avatar')
+
+  const isLoading = portfolioLoading || servicesLoading || pricingLoading || brandLoading || reviewsLoading || teamLoading
 
   // Toggle body scroll lock when modal opens/closes
   useEffect(() => {
@@ -55,7 +63,7 @@ export default function App() {
 
   return (
     <>
-      <Preloader />
+      <Preloader isLoading={isLoading} />
       <Nav />
       <Hero />
       <Work onViewAll={() => setModalOpen(true)} items={portfolioItems} />
@@ -66,11 +74,11 @@ export default function App() {
         activeFilter={activeFilter}
         setActiveFilter={setActiveFilter}
       />
-      <BrandStrip />
-      <Services />
-      <Reviews />
-      <Pricing />
-      <Team />
+      <BrandStrip data={brandData} />
+      <Services items={servicesItems} />
+      <Reviews items={reviewsItems} />
+      <Pricing items={pricingItems} />
+      <Team items={teamItems} />
       <Contact />
       <Footer />
     </>

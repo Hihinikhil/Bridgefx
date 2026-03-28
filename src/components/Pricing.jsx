@@ -25,10 +25,8 @@ const ICON_MAP = {
   ),
 }
 
-export default function Pricing() {
-  const { data } = useStrapiData('/pricing-plans?sort=order', FALLBACK)
-
-  const plans = data.map(d => ({
+export default function Pricing({ items }) {
+  const plans = (items?.length > 0 ? items : FALLBACK).map(d => ({
     tag:         d.tag         ?? '',
     amount:      d.amount      ?? '',
     featured:    d.featured    ?? false,

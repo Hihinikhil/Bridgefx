@@ -8,13 +8,9 @@ function buildMediaUrl(url) {
   return `${STRAPI_URL}${url}`;
 }
 
-export default function BrandStrip() {
-  const { data } = useStrapiData("/brand-section?populate=*", {
-    stats: [],
-    logos: [],
-  });
-
-  const stats = (data.stats ?? []).map((s) => ({
+export default function BrandStrip({ data }) {
+  const brandData = data || { stats: [], logos: [] };
+  const stats = (brandData.stats ?? []).map((s) => ({
     value: s.value ?? "",
     label: s.label ?? "",
   }));
