@@ -31,7 +31,7 @@ export default function Nav({ data }) {
     <nav ref={navRef} id="navbar">
       <div className="container nav-wrapper">
         <a href="#hero" className="logo">
-          BRIDGEFX<span>.</span>
+          {siteName}<span>.</span>
         </a>
         <ul className="nav-links">
           <li>

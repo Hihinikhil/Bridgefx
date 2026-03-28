@@ -5,7 +5,8 @@ const SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-export default function Contact() {
+export default function Contact({ data }) {
+  const contactData = data || {};
   const formRef = useRef();
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
 
