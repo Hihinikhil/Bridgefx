@@ -34,6 +34,8 @@ export default function App() {
 
   // Reveal animation: IntersectionObserver with stagger
   useEffect(() => {
+    if (isLoading) return
+
     let staggerDelay = 0
     let staggerTimeout
 
@@ -53,13 +55,17 @@ export default function App() {
       { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     )
 
-    // Attach once on mount; also attach after a short delay to catch late-renders
+    // Attach once data is loaded; small timeout to ensure DOM is fully ready
     const attach = () => document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
     attach()
-    const t = setTimeout(attach, 300)
+    const t = setTimeout(attach, 200)
 
-    return () => { observer.disconnect(); clearTimeout(t) }
-  }, [])
+    return () => { 
+      observer.disconnect()
+      clearTimeout(t) 
+      clearTimeout(staggerTimeout)
+    }
+  }, [isLoading])
 
   return (
     <>
