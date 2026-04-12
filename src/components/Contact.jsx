@@ -60,7 +60,7 @@ export default function Contact({ data }) {
             </div>
             <div className="contact-method">
               <h3>Email</h3>
-              <p style={{ color: "var(--text)" }}>hello@bridgeagency.com</p>
+              <p style={{ color: "var(--text)" }}>team@bridgefx.org</p>
             </div>
           </div>
 
