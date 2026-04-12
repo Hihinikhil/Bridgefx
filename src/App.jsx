@@ -17,13 +17,12 @@ export default function App() {
   const [modalOpen, setModalOpen]       = useState(false)
   const [activeFilter, setActiveFilter] = useState('all')
 
-  // Consolidated data fetching
   const { items: portfolioItems, loading: portfolioLoading } = usePortfolioItems()
-  const { data: servicesItems,  loading: servicesLoading }  = useStrapiData('/services?sort=order')
-  const { data: pricingItems,   loading: pricingLoading }   = useStrapiData('/pricing-plans?sort=order')
-  const { data: brandData,      loading: brandLoading }     = useStrapiData('/brand-section?populate=*')
-  const { data: reviewsItems,   loading: reviewsLoading }   = useStrapiData('/reviews?sort=order&populate=*')
-  const { data: teamItems,      loading: teamLoading }      = useStrapiData('/team-members?sort=order&populate=avatar')
+  const { data: servicesItems, loading: servicesLoading } = useStrapiData('/services?sort=order')
+  const { data: pricingItems, loading: pricingLoading } = useStrapiData('/pricing-plans?sort=order')
+  const { data: brandData, loading: brandLoading } = useStrapiData('/brand-section?populate=*')
+  const { data: reviewsItems, loading: reviewsLoading } = useStrapiData('/reviews?sort=order&populate=*')
+  const { data: teamItems, loading: teamLoading } = useStrapiData('/team-members?sort=order&populate=avatar')
 
   const isLoading = portfolioLoading || servicesLoading || pricingLoading || brandLoading || reviewsLoading || teamLoading
 

@@ -1,0 +1,26 @@
+# Wakes Strapi on Render (and Neon) before the free-tier idle timeout.
+# Setup: GitHub repo → Settings → Secrets and variables → Actions → New repository secret
+# Name: STRAPI_BASE_URL   Value: https://your-strapi.onrender.com  (no trailing slash)
+
+name: Keep Strapi warm
+
+on:
+  schedule:
+    # Every 12 minutes (Render free services often sleep ~15 min idle)
+    - cron: "*/12 * * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: HTTP GET Strapi API
+        env:
+          STRAPI_BASE_URL: ${{ secrets.STRAPI_BASE_URL }}
+        run: |
+          if [ -z "$STRAPI_BASE_URL" ]; then
+            echo "::error::Create Actions secret STRAPI_BASE_URL with your Strapi origin (e.g. https://xxx.onrender.com)"
+            exit 1
+          fi
+          # Light request; brackets in query can break shells — keep path simple
+          curl -fsS --max-time 180 "$STRAPI_BASE_URL/api/services" -o /dev/null
