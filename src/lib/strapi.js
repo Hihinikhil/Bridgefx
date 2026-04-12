@@ -6,12 +6,10 @@ const BASE = import.meta.env.VITE_STRAPI_URL || 'http://localhost:1337'
  * @returns {Promise<any>}
  */
 export async function fetchStrapi(path) {
-  // Add a timestamp query parameter to bypass any intermediate caching
-  const separator = path.includes('?') ? '&' : '?'
-  const url = `${BASE}/api${path}${separator}t=${Date.now()}`
-  
+  const url = `${BASE}/api${path.startsWith('/') ? path : `/${path}`}`
+
   const res = await fetch(url, {
-    cache: 'no-store', // Tell the browser not to use its cache
+    cache: 'default',
     headers: {
       'Content-Type': 'application/json',
     },
